@@ -18,6 +18,7 @@ let serial = 1;
 
 const contactsReducer = (state = initialState, action) => {
   const { type } = action;
+  console.log('action', action);
 
   switch (type) {
     case ACTION_TYPES.CREATE_CONTACT: {
@@ -31,6 +32,19 @@ const contactsReducer = (state = initialState, action) => {
           isFavourite: false,
         },
       ];
+      return { ...state, contacts: newContacts };
+    }
+    case ACTION_TYPES.UPDATE_CONTACT: {
+      const { newContactInfo, contactId } = action;
+      const { contacts } = state;
+
+      const newContacts = [...contacts];
+      const contactIndex = newContacts.findIndex(c => c.id === contactId);
+      newContacts[contactIndex] = {
+        ...newContacts[contactIndex],
+        ...newContactInfo,
+      };
+
       return { ...state, contacts: newContacts };
     }
     default:
