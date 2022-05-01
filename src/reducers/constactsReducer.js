@@ -11,7 +11,7 @@ const initialState = {
   error: null,
 };
 
-const contactsReducer = (state, action) => {
+const contactsReducer = (state = initialState, action) => {
   const { type } = action;
   switch (type) {
     default:
