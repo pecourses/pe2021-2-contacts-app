@@ -1,0 +1,5 @@
+const ACTION_TYPES = {
+  CREATE_CONTACT: 'CREATE_CONTACT',
+};
+
+export default ACTION_TYPES;
