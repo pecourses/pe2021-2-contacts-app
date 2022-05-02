@@ -1,0 +1,18 @@
+.contactInfo {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  margin: 30px;
+  border: 1px solid grey;
+  box-shadow: 0 0 5px grey;
+  &:hover {
+    background-color: #eee;
+  }
+  & :last-child {
+    margin-left: auto;
+  }
+}
+
+.contactWithBirthdayToday {
+  box-shadow: 0 0 5px red;
+}
