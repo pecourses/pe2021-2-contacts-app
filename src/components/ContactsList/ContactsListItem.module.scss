@@ -3,6 +3,7 @@
   align-items: center;
   padding: 10px;
   margin: 30px;
+  position: relative;
   border: 1px solid grey;
   box-shadow: 0 0 5px grey;
   &:hover {
@@ -15,4 +16,12 @@
 
 .contactWithBirthdayToday {
   box-shadow: 0 0 5px red;
+}
+
+.reminder {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  padding: 2px;
+  color: red;
 }

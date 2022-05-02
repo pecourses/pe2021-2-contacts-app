@@ -33,6 +33,11 @@ function ContactsListItem (props) {
       <input type='checkbox' checked={isFavourite} onChange={handleChange} />
       Name: {name}, tel: {telNumber},
       {!birthday || <span> birthday: {birthday}</span>}
+      {isTodayContactBirthday && (
+        <span className={styles.reminder}>
+          Congratulate {name} with Birthday!
+        </span>
+      )}
       <DeleteForeverIcon onClick={handleClickDelete} />
     </li>
   );
