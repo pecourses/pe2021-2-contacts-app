@@ -10,3 +10,8 @@ export const updateContact = (newContactInfo, contactId) => ({
   newContactInfo,
   contactId,
 });
+
+export const removeContact = contactId => ({
+  type: ACTION_TYPES.REMOVE_CONTACT,
+  contactId,
+});
