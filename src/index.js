@@ -6,6 +6,21 @@ import reportWebVitals from './reportWebVitals';
 import { Provider } from 'react-redux';
 import store from './store/index';
 
+/* ------- Краткая формулировка задания:------------
+Форма:
+- имя
+- тел номер
+- дата рождения
+- (isFavourite)
+
+Список контактов:
+ - просмотр инфы о контактах
+ - подсветка контакта с ДР сегодня
+ - добавление контакта в изборанное
+ - удаление контакта
+ - фильтрация списка контактов: все/избранные/не избранные
+------------------------------------------/--------*/
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
