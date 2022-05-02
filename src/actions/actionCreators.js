@@ -15,3 +15,8 @@ export const removeContact = contactId => ({
   type: ACTION_TYPES.REMOVE_CONTACT,
   contactId,
 });
+
+export const updateFilter = values => ({
+  type: ACTION_TYPES.UPDATE_FILTER,
+  values,
+});

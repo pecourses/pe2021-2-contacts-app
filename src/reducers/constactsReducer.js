@@ -1,3 +1,4 @@
+import { format } from 'date-fns';
 import ACTION_TYPES from '../actions/actionTypes';
 
 const initialState = {
@@ -9,9 +10,19 @@ const initialState = {
       birthday: '2000-12-01',
       isFavourite: false,
     },
+    {
+      id: -1,
+      name: 'Test1',
+      telNumber: '+380123456788',
+      birthday: format(new Date(), 'Y-MM-dd'),
+      isFavourite: true,
+    },
   ],
   isFetching: false,
   error: null,
+  filter: {
+    isFavourite: '',
+  },
 };
 
 let serial = 1;
@@ -56,6 +67,14 @@ const contactsReducer = (state = initialState, action) => {
       newContacts.splice(contactIndex, 1);
 
       return { ...state, contacts: newContacts };
+    }
+    case ACTION_TYPES.UPDATE_FILTER: {
+      const { values } = action;
+      const { filter } = state;
+      return {
+        ...state,
+        filter: { ...filter, ...values },
+      };
     }
     default:
       return state;
