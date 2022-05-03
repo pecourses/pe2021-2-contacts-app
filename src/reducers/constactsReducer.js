@@ -29,7 +29,6 @@ let serial = 1;
 
 const contactsReducer = (state = initialState, action) => {
   const { type } = action;
-  console.log('action', action);
 
   switch (type) {
     case ACTION_TYPES.CREATE_CONTACT: {
