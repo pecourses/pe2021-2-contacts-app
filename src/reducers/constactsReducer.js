@@ -2,22 +2,7 @@ import { format } from 'date-fns';
 import ACTION_TYPES from '../actions/actionTypes';
 
 const initialState = {
-  contacts: [
-    {
-      id: 0,
-      name: 'Test',
-      telNumber: '+380123456789',
-      birthday: '2000-12-01',
-      isFavourite: false,
-    },
-    {
-      id: -1,
-      name: 'Test1',
-      telNumber: '+380123456788',
-      birthday: format(new Date(), 'Y-MM-dd'),
-      isFavourite: true,
-    },
-  ],
+  contacts: [],
   isFetching: false,
   error: null,
   filter: {
