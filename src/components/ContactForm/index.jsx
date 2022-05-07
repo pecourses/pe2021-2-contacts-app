@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import { CONTACT_VALIDATION_SCHEMA } from '../../utils/validationSchemas';
-import { createContact } from '../../actions/actionCreators';
+import { createContactAction } from '../../actions/actionCreators';
 
 function ContactForm (props) {
   const { create } = props;
@@ -39,7 +39,7 @@ function ContactForm (props) {
 
 const mapDispatchToProps = dispatch => ({
   create: values => {
-    dispatch(createContact(values));
+    dispatch(createContactAction(values));
   },
 });
 
