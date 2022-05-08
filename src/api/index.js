@@ -22,7 +22,7 @@ class ContactsDB {
   }
 
   createContact (newContact) {
-    this.contacts.push({ ...newContact, id: Date.now() });
+    this.contacts.push({ ...newContact, id: Date.now(), isFavourite: false });
     return this.contacts[this.contacts.length - 1];
   }
 
