@@ -33,7 +33,6 @@ const contactsReducer = (state = initialState, action) => {
     }
     case ACTION_TYPES.GET_CONTACTS_SUCCESS: {
       const { newContacts: receivedContacts } = action;
-      const { contacts } = state;
 
       const newContacts = [...receivedContacts];
       return { ...state, contacts: newContacts, isFetching: false };
