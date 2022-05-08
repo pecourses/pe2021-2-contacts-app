@@ -21,6 +21,21 @@ export const createContactError = err => ({
   err,
 });
 
+export const getContactsAction = () => ({
+  type: ACTION_TYPES.GET_CONTACTS_ACTION,
+});
+export const getContactsRequest = () => ({
+  type: ACTION_TYPES.GET_CONTACTS_REQUEST,
+});
+export const getContactsSuccess = newContacts => ({
+  type: ACTION_TYPES.GET_CONTACTS_SUCCESS,
+  newContacts,
+});
+export const getContactsError = err => ({
+  type: ACTION_TYPES.GET_CONTACTS_ERROR,
+  err,
+});
+
 export const updateContact = (newContactInfo, contactId) => ({
   type: ACTION_TYPES.UPDATE_CONTACT,
   newContactInfo,
