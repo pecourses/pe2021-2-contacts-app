@@ -1,4 +1,5 @@
 import { format } from 'date-fns';
+
 const contactsDB = [
   {
     id: 0,
@@ -15,11 +16,41 @@ const contactsDB = [
     isFavourite: true,
   },
 ];
+class ContactsDB {
+  constructor (arr) {
+    this.contacts = [...arr];
+  }
 
-let serial = 1;
+  createContact (newContact) {
+    this.contacts.push({ ...newContact, id: Date.now() });
+    return this.contacts[this.contacts.length - 1];
+  }
 
-export const createContact = values => {
-  contactsDB.push({ ...values, id: serial++ });
-  console.log('contactsDB', contactsDB);
-  return contactsDB[contactsDB.length - 1];
-};
+  getContacts () {
+    return [...this.contacts];
+  }
+
+  updateContact (id, values) {
+    const foundContactIndex = this.contacts.findIndex(c => c.id === id);
+    this.contacts[foundContactIndex] = {
+      ...this.contacts[foundContactIndex],
+      ...values,
+    };
+    return this.contacts[foundContactIndex];
+  }
+
+  deleteContact (id) {
+    const foundContactIndex = this.contacts.findIndex(c => c.id === id);
+    this.contacts.splice(foundContactIndex, 1);
+  }
+}
+
+const contactsDbInstace = new ContactsDB(contactsDB);
+
+// CRUD
+console.log('get', contactsDbInstace.getContacts());
+console.log('update', contactsDbInstace.updateContact(0, { name: 'newName' }));
+console.log('delete', contactsDbInstace.deleteContact(0));
+console.log('get', contactsDbInstace.getContacts());
+
+export const createContact = values => contactsDbInstace.createContact(values);
