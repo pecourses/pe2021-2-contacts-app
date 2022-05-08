@@ -1,8 +1,14 @@
 import { connect } from 'react-redux';
+import { useEffect } from 'react';
+import { getContactsAction } from '../../actions/actionCreators';
 import ContactsListItem from './ContactsListItem';
 
 function ContactsList (props) {
-  const { contacts, isFetching, error, filter } = props;
+  const { contacts, isFetching, error, filter, getContacts } = props;
+
+  useEffect(() => {
+    getContacts();
+  }, []);
 
   const mapContact = (c, index, arr) => (
     <ContactsListItem key={c.id} contact={c} />
@@ -31,4 +37,8 @@ function ContactsList (props) {
 
 const mapStateToProps = ({ contactsData }) => contactsData;
 
-export default connect(mapStateToProps)(ContactsList);
+const mapDispatchToProps = dispatch => ({
+  getContacts: () => dispatch(getContactsAction()),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(ContactsList);
