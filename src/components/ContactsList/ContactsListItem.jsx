@@ -2,7 +2,10 @@ import React from 'react';
 import { connect } from 'react-redux';
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 import classNames from 'classnames';
-import { updateContact, removeContact } from '../../actions/actionCreators';
+import {
+  removeContact,
+  updateContactAction,
+} from '../../actions/actionCreators';
 import styles from './ContactsListItem.module.scss';
 import { isBirthdayToday } from '../../utils/dateUtils';
 
@@ -47,7 +50,7 @@ function ContactsListItem (props) {
 
 const mapDispathToProps = dispatch => ({
   update: (values, id) => {
-    dispatch(updateContact(values, id));
+    dispatch(updateContactAction(values, id));
   },
   remove: id => {
     dispatch(removeContact(id));

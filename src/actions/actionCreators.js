@@ -1,10 +1,5 @@
 import ACTION_TYPES from './actionTypes';
 
-// export const createContact = newContact => ({
-//   type: ACTION_TYPES.CREATE_CONTACT,
-//   newContact,
-// });
-
 export const createContactAction = values => ({
   type: ACTION_TYPES.CREATE_CONTACT_ACTION,
   values,
@@ -36,10 +31,21 @@ export const getContactsError = err => ({
   err,
 });
 
-export const updateContact = (newContactInfo, contactId) => ({
-  type: ACTION_TYPES.UPDATE_CONTACT,
-  newContactInfo,
-  contactId,
+export const updateContactAction = (values, id) => ({
+  type: ACTION_TYPES.UPDATE_CONTACT_ACTION,
+  id,
+  values,
+});
+export const updateContactRequest = () => ({
+  type: ACTION_TYPES.UPDATE_CONTACT_REQUEST,
+});
+export const updateContactSuccess = updatedContact => ({
+  type: ACTION_TYPES.UPDATE_CONTACT_SUCCESS,
+  updatedContact,
+});
+export const updateContactError = err => ({
+  type: ACTION_TYPES.UPDATE_CONTACT_ERROR,
+  err,
 });
 
 export const removeContact = contactId => ({

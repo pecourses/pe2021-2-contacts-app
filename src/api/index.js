@@ -50,3 +50,6 @@ const contactsDbInstace = new ContactsDB(contactsDB);
 export const createContact = values => contactsDbInstace.createContact(values);
 
 export const getContacts = () => contactsDbInstace.getContacts();
+
+export const updateContact = (id, values) =>
+  contactsDbInstace.updateContact(id, values);

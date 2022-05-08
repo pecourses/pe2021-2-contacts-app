@@ -41,19 +41,24 @@ const contactsReducer = (state = initialState, action) => {
       const { err } = action;
       return { ...state, error: err, isFetching: false };
     }
-    //-------------------------
-    case ACTION_TYPES.UPDATE_CONTACT: {
-      const { newContactInfo, contactId } = action;
+    // UPDATE_CONTACT_...
+    case ACTION_TYPES.UPDATE_CONTACT_REQUEST: {
+      return { ...state, isFetching: true, error: null };
+    }
+    case ACTION_TYPES.UPDATE_CONTACT_SUCCESS: {
+      const { updatedContact } = action;
       const { contacts } = state;
 
       const newContacts = [...contacts];
-      const contactIndex = newContacts.findIndex(c => c.id === contactId);
-      newContacts[contactIndex] = {
-        ...newContacts[contactIndex],
-        ...newContactInfo,
-      };
-
-      return { ...state, contacts: newContacts };
+      const updatedContactIndex = newContacts.findIndex(
+        c => c.id === updatedContact.id
+      );
+      newContacts[updatedContactIndex] = { ...updatedContact };
+      return { ...state, contacts: newContacts, isFetching: false };
+    }
+    case ACTION_TYPES.UPDATE_CONTACT_ERROR: {
+      const { err } = action;
+      return { ...state, error: err, isFetching: false };
     }
     case ACTION_TYPES.REMOVE_CONTACT: {
       const { contactId } = action;
