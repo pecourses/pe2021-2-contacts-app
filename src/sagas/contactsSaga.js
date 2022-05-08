@@ -7,7 +7,7 @@ import {
   getContactsSuccess,
   getContactsError,
 } from '../actions/actionCreators';
-import { createContact } from '../api';
+import { createContact, getContacts } from '../api';
 
 export function * createContactSaga (action) {
   yield put(createContactRequest());

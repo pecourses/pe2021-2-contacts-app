@@ -48,3 +48,5 @@ class ContactsDB {
 const contactsDbInstace = new ContactsDB(contactsDB);
 
 export const createContact = values => contactsDbInstace.createContact(values);
+
+export const getContacts = () => contactsDbInstace.getContacts();
