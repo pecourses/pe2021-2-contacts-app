@@ -17,7 +17,7 @@ export const createContactSuccess = newContact => ({
   newContact,
 });
 export const createContactError = err => ({
-  type: ACTION_TYPES.CREATE_CONTACT_SUCCESS,
+  type: ACTION_TYPES.CREATE_CONTACT_ERROR,
   err,
 });
 

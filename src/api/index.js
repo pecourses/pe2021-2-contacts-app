@@ -47,10 +47,4 @@ class ContactsDB {
 
 const contactsDbInstace = new ContactsDB(contactsDB);
 
-// CRUD
-console.log('get', contactsDbInstace.getContacts());
-console.log('update', contactsDbInstace.updateContact(0, { name: 'newName' }));
-console.log('delete', contactsDbInstace.deleteContact(0));
-console.log('get', contactsDbInstace.getContacts());
-
 export const createContact = values => contactsDbInstace.createContact(values);

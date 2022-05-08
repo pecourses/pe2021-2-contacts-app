@@ -16,19 +16,20 @@ const contactsReducer = (state = initialState, action) => {
   const { type } = action;
 
   switch (type) {
-    case ACTION_TYPES.CREATE_CONTACT: {
+    case ACTION_TYPES.CREATE_CONTACT_REQUEST: {
+      return { ...state, isFetching: true, error: null };
+    }
+    case ACTION_TYPES.CREATE_CONTACT_SUCCESS: {
       const { newContact } = action;
       const { contacts } = state;
-      const newContacts = [
-        ...contacts,
-        {
-          ...newContact,
-          id: serial++,
-          isFavourite: false,
-        },
-      ];
-      return { ...state, contacts: newContacts };
+      const newContacts = [...contacts, { ...newContact }];
+      return { ...state, contacts: newContacts, isFetching: false };
     }
+    case ACTION_TYPES.CREATE_CONTACT_ERROR: {
+      const { err } = action;
+      return { ...state, error: err, isFetching: false };
+    }
+
     case ACTION_TYPES.UPDATE_CONTACT: {
       const { newContactInfo, contactId } = action;
       const { contacts } = state;
