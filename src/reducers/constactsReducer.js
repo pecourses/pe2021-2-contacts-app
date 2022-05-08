@@ -1,4 +1,3 @@
-import { format } from 'date-fns';
 import ACTION_TYPES from '../actions/actionTypes';
 
 const initialState = {
@@ -10,12 +9,11 @@ const initialState = {
   },
 };
 
-let serial = 1;
-
 const contactsReducer = (state = initialState, action) => {
   const { type } = action;
 
   switch (type) {
+    // CREATE_CONTACT_...
     case ACTION_TYPES.CREATE_CONTACT_REQUEST: {
       return { ...state, isFetching: true, error: null };
     }
@@ -29,7 +27,22 @@ const contactsReducer = (state = initialState, action) => {
       const { err } = action;
       return { ...state, error: err, isFetching: false };
     }
+    // GET_CONTACTS_...
+    case ACTION_TYPES.GET_CONTACTS_REQUEST: {
+      return { ...state, isFetching: true, error: null };
+    }
+    case ACTION_TYPES.GET_CONTACTS_SUCCESS: {
+      const { newContacts: receivedContacts } = action;
+      const { contacts } = state;
 
+      const newContacts = [...receivedContacts];
+      return { ...state, contacts: newContacts, isFetching: false };
+    }
+    case ACTION_TYPES.GET_CONTACTS_ERROR: {
+      const { err } = action;
+      return { ...state, error: err, isFetching: false };
+    }
+    //-------------------------
     case ACTION_TYPES.UPDATE_CONTACT: {
       const { newContactInfo, contactId } = action;
       const { contacts } = state;
