@@ -9,8 +9,16 @@ import {
   updateContactRequest,
   updateContactSuccess,
   updateContactError,
+  removeContactRequest,
+  removeContactSuccess,
+  removeContactError,
 } from '../actions/actionCreators';
-import { createContact, getContacts, updateContact } from '../api';
+import {
+  createContact,
+  getContacts,
+  removeContact,
+  updateContact,
+} from '../api';
 
 export function * createContactSaga (action) {
   yield put(createContactRequest());
@@ -40,5 +48,15 @@ export function * updateContactSaga ({ id, values }) {
     yield put(updateContactSuccess(data));
   } catch (e) {
     yield put(updateContactError(e));
+  }
+}
+
+export function * removeContactSaga ({ id }) {
+  yield put(removeContactRequest());
+  try {
+    yield removeContact(id);
+    yield put(removeContactSuccess(id));
+  } catch (e) {
+    yield put(removeContactError(e));
   }
 }

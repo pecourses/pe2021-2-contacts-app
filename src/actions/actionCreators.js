@@ -52,6 +52,21 @@ export const removeContact = contactId => ({
   type: ACTION_TYPES.REMOVE_CONTACT,
   contactId,
 });
+export const removeContactAction = id => ({
+  type: ACTION_TYPES.REMOVE_CONTACT_ACTION,
+  id,
+});
+export const removeContactRequest = () => ({
+  type: ACTION_TYPES.REMOVE_CONTACT_REQUEST,
+});
+export const removeContactSuccess = id => ({
+  type: ACTION_TYPES.REMOVE_CONTACT_SUCCESS,
+  id,
+});
+export const removeContactError = err => ({
+  type: ACTION_TYPES.REMOVE_CONTACT_ERROR,
+  err,
+});
 
 export const updateFilter = values => ({
   type: ACTION_TYPES.UPDATE_FILTER,

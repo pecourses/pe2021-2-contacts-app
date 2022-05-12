@@ -53,3 +53,5 @@ export const getContacts = () => contactsDbInstace.getContacts();
 
 export const updateContact = (id, values) =>
   contactsDbInstace.updateContact(id, values);
+
+export const removeContact = id => contactsDbInstace.deleteContact(id);

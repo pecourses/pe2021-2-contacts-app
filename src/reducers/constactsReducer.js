@@ -60,6 +60,24 @@ const contactsReducer = (state = initialState, action) => {
       const { err } = action;
       return { ...state, error: err, isFetching: false };
     }
+    // REMOVE_CONTACT_...
+    case ACTION_TYPES.REMOVE_CONTACT_REQUEST: {
+      return { ...state, isFetching: true, error: null };
+    }
+    case ACTION_TYPES.REMOVE_CONTACT_SUCCESS: {
+      const { id } = action;
+      const { contacts } = state;
+
+      const newContacts = [...contacts];
+      const removedContactIndex = newContacts.findIndex(c => c.id === id);
+      newContacts.splice(removedContactIndex, 1);
+      return { ...state, contacts: newContacts, isFetching: false };
+    }
+    case ACTION_TYPES.REMOVE_CONTACT_ERROR: {
+      const { err } = action;
+      return { ...state, error: err, isFetching: false };
+    }
+
     case ACTION_TYPES.REMOVE_CONTACT: {
       const { contactId } = action;
       const { contacts } = state;

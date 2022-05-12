@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 import classNames from 'classnames';
 import {
-  removeContact,
+  removeContactAction,
   updateContactAction,
 } from '../../actions/actionCreators';
 import styles from './ContactsListItem.module.scss';
@@ -53,7 +53,7 @@ const mapDispathToProps = dispatch => ({
     dispatch(updateContactAction(values, id));
   },
   remove: id => {
-    dispatch(removeContact(id));
+    dispatch(removeContactAction(id));
   },
 });
 
